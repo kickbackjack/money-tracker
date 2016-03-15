@@ -10,9 +10,11 @@ var AccountSchema = new mongoose.Schema({
   transactions: [{
   	datecreated: { type: Date, default: Date.now },
   	cleared: Boolean,
-  	amount: Number,
+  	income: Number,
+  	outcome: Number,
   	description: String,
-  	category: String
+  	category: String,
+  	payee: String
   }],
   current: {
   	balance: Number,

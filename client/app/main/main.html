@@ -1,18 +1,19 @@
-<header class="hero-unit" id="banner">
+<!-- <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Welcome to Money Bags!</h1>
+    <p class="lead">Money Bags is the simple to use personal finance tool</p>
   </div>
-</header>
+</header> -->
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button></a></li>
-      </ul>
+    <div layout="column">
+      <h1 flex class="page-header">Features:</h1>
+      <div layout="column">
+        <ul ng-repeat="thing in main.awesomeThings">
+          <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -24,5 +25,41 @@
         <button type="submit" class="btn btn-primary" ng-click="main.addThing()">Add New</button>
       </span>
     </p>
+  </form>
+
+  <div layout="row">
+    <md-input-container class="md-block">
+      <label>Payee</label>
+      <input required name="payee" ng-model="transactionForm.payee">
+      <div ng-messages="transactionForm.payee.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Date</label>
+      <md-datepicker required name="date" ng-model="transactionForm.datecreated"></input>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Description</label>
+      <input md-maxlength="120" required name="description" ng-model="transactionForm.description"></input>
+    </md-input-container>
+
+    <md-input-container flex class="md-block">
+      <label>Income</label>
+      <input required name="income" ng-model="transactionForm.income"></input>
+    </md-input-container>
+
+    <md-input-container flex class="md-block">
+      <label>Outcome</label>
+      <input required name="outcome" ng-model="transactionForm.outcome"></input>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <md-checkbox ng-model="transactionForm.cleared" aria-label="Cleared?"></md-checkbox>
+    </md-input-container>
+
+
   </form>
 </div>

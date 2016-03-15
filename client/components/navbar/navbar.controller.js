@@ -68,7 +68,7 @@ class LeftCtrl {
     $scope.close = function () {
       $mdSidenav('left').close()
         .then(function () {
-          $log.debug("close LEFT is done");
+          $log.debug("Closing Left Navigation Bar");
         });
     };
   }

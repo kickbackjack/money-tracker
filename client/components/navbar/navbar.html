@@ -3,20 +3,18 @@
     <md-sidenav
         class="md-sidenav-left"
         md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-sm')"
+        md-is-locked-open="$mdMedia('gt-md')"
         md-whiteframe="4">
       <md-toolbar class="md-theme-indigo">
         <h1 class="md-toolbar-tools">Sidenav Left</h1>
       </md-toolbar>
       <md-content layout-padding ng-controller="LeftCtrl">
-        <md-button ng-click="close()" class="md-primary" hide-gt-sm>
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
           Close Sidenav Left
         </md-button>
 
         <div layout="column">
-          <md-button ng-repeat="item in nav.menu">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-          </md-button>
+          <md-button ng-repeat="item in nav.menu" ng-href="{{item.state}}">{{item.title}}</md-button>
         </div>
 
       </md-content>
@@ -24,10 +22,8 @@
     <md-content flex layout-padding>
       <div layout="column" layout-fill layout-align="top center">
         <div>
-          <md-button ng-click="toggleLeft()"
-            class="md-primary" hide-gt-sm>
-            Toggle left
-          </md-button>
+          <md-button ng-click="toggleLeft()" class="md-fab md-primary" aria-label="Open Sidebar" 
+            hide-gt-md></md-button>
         </div>
       </div>
       <div flex></div>

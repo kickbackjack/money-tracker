@@ -1,33 +1,29 @@
-<div ng-controller="NavbarController" layout="column" ng-cloak>
+<div ng-controller="NavbarController" layout="column" flex ng-cloak>
   <section layout="row" flex>
     <md-sidenav
         class="md-sidenav-left"
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-md')"
         md-whiteframe="4">
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
-      </md-toolbar>
-      <md-content layout-padding ng-controller="LeftCtrl">
-        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
-        </md-button>
 
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>
+            <span>Money Bags</span>
+          </h2>
+          <span flex></span>
+          <md-button ng-click="toggleLeft()" class="md-icon-button" hide-gt-md>
+            <md-icon md-svg-icon="minimise"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+
+      <md-content>
         <div layout="column">
           <md-button ng-repeat="item in nav.menu" ng-href="{{item.state}}">{{item.title}}</md-button>
         </div>
-
       </md-content>
     </md-sidenav>
-    <md-content flex layout-padding>
-      <div layout="column" layout-fill layout-align="top center">
-        <div>
-          <md-button ng-click="toggleLeft()" class="md-fab md-primary" aria-label="Open Sidebar" 
-            hide-gt-md></md-button>
-        </div>
-      </div>
-      <div flex></div>
-    </md-content>
   </section>
 </div>
 

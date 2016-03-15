@@ -26,7 +26,7 @@ class NavbarController {
      * Supplies a function that will continue to operate until the
      * time is up.
      */
-    function debounce(func, wait, context) {
+    function debounce(func, wait) {
       var timer;
       return function debounced() {
         var context = $scope,
@@ -47,24 +47,15 @@ class NavbarController {
         $mdSidenav(navID)
           .toggle()
           .then(function () {
-            $log.debug("toggle " + navID + " is done");
+            $log.debug("Sidebar toggle is done");
           });
       }, 200);
-    }
-    function buildToggler(navID) {
-      return function() {
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
-          });
-      }
     }
   }
 }
 
 class LeftCtrl {
-  constructor(Auth, $scope, $timeout, $mdSidenav, $log) {
+  constructor($scope, $mdSidenav, $log) {
     $scope.close = function () {
       $mdSidenav('left').close()
         .then(function () {

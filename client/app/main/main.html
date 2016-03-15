@@ -1,55 +1,59 @@
-<div class="container">
-  <div class="row">
-    <div layout="column">
-      <h1 flex class="page-header">Features:</h1>
-      <div layout="column">
-        <ul ng-repeat="thing in main.awesomeThings">
-          <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button></a></li>
-        </ul>
-      </div>
+<div layout="column">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Open Sidebar" hide-gt-md>
+        <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+      <h2>
+        <span>Accounts</span>
+      </h2>
+      <span flex></span>
     </div>
-  </div>
+  </md-toolbar>
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="main.newThing">
+  <md-content>
+    <form class="thing-form">
+      <label>Syncs in realtime across clients</label>
+      <p class="input-group">
+        <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="main.newThing">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-primary" ng-click="main.addThing()">Add New</button>
       </span>
-    </p>
-  </form>
+      </p>
+    </form>
 
-  <div layout="row">
-    <md-input-container class="md-block">
-      <label>Payee</label>
-      <input required name="payee" ng-model="transactionForm.payee">
-      <div ng-messages="transactionForm.payee.$error">
-        <div ng-message="required">This is required.</div>
-      </div>
-    </md-input-container>
+    <div layout="row">
+      <md-input-container class="md-block">
+        <label>Payee</label>
+        <input required name="payee" ng-model="transactionForm.payee">
+        <div ng-messages="transactionForm.payee.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
 
-    <md-datepicker required name="date" ng-model="transactionForm.datecreated"></input>
+      <md-datepicker required name="date" ng-model="transactionForm.datecreated"></input>
 
-    <md-input-container class="md-block">
-      <label>Description</label>
-      <input md-maxlength="120" required name="description" ng-model="transactionForm.description"></input>
-    </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <input md-maxlength="120" required name="description" ng-model="transactionForm.description"></input>
+        </md-input-container>
 
-    <md-input-container flex class="md-block">
-      <label>Income</label>
-      <input required name="income" ng-model="transactionForm.income"></input>
-    </md-input-container>
+        <md-input-container flex class="md-block">
+          <label>Income</label>
+          <input required name="income" ng-model="transactionForm.income"></input>
+        </md-input-container>
 
-    <md-input-container flex class="md-block">
-      <label>Outcome</label>
-      <input required name="outcome" ng-model="transactionForm.outcome"></input>
-    </md-input-container>
+        <md-input-container flex class="md-block">
+          <label>Outcome</label>
+          <input required name="outcome" ng-model="transactionForm.outcome"></input>
+        </md-input-container>
 
-    <md-input-container class="md-block">
-      <md-checkbox ng-model="transactionForm.cleared" aria-label="Cleared?"></md-checkbox>
-    </md-input-container>
+        <md-input-container class="md-block">
+          <md-checkbox ng-model="transactionForm.cleared" aria-label="Cleared?"></md-checkbox>
+        </md-input-container>
 
 
-  </form>
+        </form>
+    </div>
+
 </div>

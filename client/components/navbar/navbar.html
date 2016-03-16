@@ -42,7 +42,7 @@
           <md-toolbar>
             <div class="md-toolbar-tools">
               <h2>
-                <span>Account</span>
+                <span>Accounts</span>
               </h2>
               <span flex></span>
               <span>£123.45</span>
@@ -51,7 +51,7 @@
 
           <md-content>
             <md-list>
-              <md-list-item ng-repeat="account in accounts" ng-click="openLink(item.state)">
+              <md-list-item ng-repeat="account in accounts">
                 <span>{{account.name}}</span>
                 <span flex></span>
                 <span>{{account.current.balance}}</span>
@@ -61,12 +61,11 @@
 
               <!-- New Account -->
               <md-list-item ng-click="openNewAccountModal()">
+                <span flex></span>
                 <span>New Account</span>
               </md-list-item>
             </md-list>
           </md-content>
-
-
         </div>
       </md-content>
     </md-sidenav>

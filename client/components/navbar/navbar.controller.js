@@ -18,13 +18,17 @@ class NavbarController {
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
 
-    this.accounts = [];
+    $scope.accounts = [];
 
     // Load / Sync Accounts accross
     $http.get('/api/accounts').then(response => {
       $log.log('Loaded all bank accounts from server (' + response.data.length + ' found)');
-      this.accounts = response.data;
-      socket.syncUpdates('accounts', this.accounts);
+      $scope.accounts = response.data;
+      socket.syncUpdates('accounts', $scope.accounts);
+    });
+
+    $scope.$on('$destroy', function() {
+      socket.unsyncUpdates('accounts');
     });
 
     /**
@@ -69,15 +73,46 @@ class NavbarController {
     /**
      * New Account Modal Controller
      */
-    function NewAccountCtrl($scope, $mdDialog, $log) {
+    function NewAccountCtrl($scope, $mdDialog, $log, $http) {
       $scope.availableTypes = [
-          'Checking',
-          'Savings',
-          'Credit Card',
-          'Cash',
-          'Line of Credit'
+        'Checking',
+        'Savings',
+        'Credit Card',
+        'Cash',
+        'Line of Credit'
       ];
-      
+
+      $scope.defaultAccount = {
+        name: '',
+        description: '',
+        type: $scope.availableTypes[0],
+        active: true,
+        transactions: [],
+        current: {
+          balance: 0,
+          unclearedbalance: 0
+        }
+      }
+      $scope.account = $scope.defaultAccount;
+
+      function addAccount() {
+        $log.debug('Adding Account ' + $scope.account);
+        if ($scope.account) {
+          $http.post('/api/accounts', { 
+            name: $scope.account.name,
+            description: $scope.account.description,
+            type: $scope.account.type,
+            active: true,
+            transactions: [],
+            current: {
+              balance: $scope.account.balance,
+              unclearedbalance: $scope.account.balance
+            }
+          });
+          $scope.account = {};
+        }
+      }
+
       $scope.hide = function() {
         $log.debug('Hiding the dialog');
         $mdDialog.hide();
@@ -86,9 +121,12 @@ class NavbarController {
         $log.debug('Cancelling the dialog');
         $mdDialog.cancel();
       };
-      $scope.answer = function(answer) {
-        $log.debug('Answering the dialog');
-        $mdDialog.hide(answer);
+      $scope.addAccount = function() {
+        $log.debug('Submit Button Clicked');
+
+        addAccount();
+
+        $mdDialog.hide();
       };
     }
 

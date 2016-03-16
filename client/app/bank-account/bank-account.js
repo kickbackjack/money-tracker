@@ -7,12 +7,12 @@ angular.module('ynabExtensionApp')
         url: '/bank-account',
         templateUrl: 'app/bank-account/bank-account.html',
         controller: 'BankAccountCtrl'
-      })
-      .state('bank-account.list', {
-      	url: '/bank-account/all',
-      	templateUrl: 'app/bank-account/bank-account-all.html',
-      	controller: 'BankAccountAllCtrl'
       });
+      //.state('bank-account.list', {
+      //	url: '/bank-account/all',
+      //	templateUrl: 'app/bank-account/bank-account-all.html',
+      //	controller: 'BankAccountAllCtrl'
+      //});
 
     //   $stateProvider
     //   .state('bank-account', {

@@ -17,13 +17,18 @@ class NavbarController {
   }];
   //end-non-standard
 
-  constructor(Auth, $scope, $timeout, $http, $mdSidenav, $log, $location, $mdDialog, $mdMedia, socket, BankAccount) {
+  constructor(Auth, $scope, $timeout, $mdSidenav, $log, $location, BankAccount) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
 
     $scope.accounts = BankAccount.accounts;
-
+    $scope.$watch(BankAccount.accounts, function(newVal) {
+      if (newVal) {
+        $log.debug('Accounts list has changed (' + newVal.length + 'found)');
+        $scope.accounts = newVal;
+      }
+    }, true);
 
     /**
      * Supplies a function that will continue to operate until the
@@ -66,6 +71,7 @@ class NavbarController {
 
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.openLink = openLink;
+    $scope.openAddAccountDialog = BankAccount.openAddAccountDialog;
   }
 }
 

@@ -1,0 +1,52 @@
+<md-dialog aria-label="New Account" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>New Account</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Name</label>
+	      <input required name="name" ng-model="account.name">
+	      <div ng-messages="account.name.$error">
+	        <div ng-message="required">This is required.</div>
+	      </div>
+	    </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Description</label>
+	      <input required name="description" ng-model="account.description">
+	    </md-input-container>
+
+        <md-input-container>
+	      <label>Type</label>
+	      <md-select ng-model="account.type">
+	        <md-option ng-repeat="type in availableTypes" value="{{type}}">
+	          {{type}}
+	        </md-option>
+	      </md-select>
+	     </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Starting Balance</label>
+	      <input required name="balance" type="number" step="any" ng-model="account.current.balance">
+	      <div ng-messages="account.balance.$error">
+	        <div ng-message="required">This is required.</div>
+	      </div>
+	    </md-input-container>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click="submit()" style="margin-right:20px;">Submit</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -15,7 +15,7 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth, $scope, $timeout, $mdSidenav, $log) {
+  constructor(Auth, $scope, $timeout, $mdSidenav, $log, $location) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
@@ -50,7 +50,13 @@ class NavbarController {
       }, 200);
     }
 
+    function openLink(link) {
+      $log.debug('Navigating to ' + link);
+      $location.path(link);
+    }
+
     $scope.toggleLeft = buildDelayedToggler('left');
+    $scope.openLink = openLink;
   }
 }
 

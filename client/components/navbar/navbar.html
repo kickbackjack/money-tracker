@@ -32,7 +32,9 @@
 
           <md-content>
             <md-list>
-              <md-list-item ng-repeat="item in nav.menu" ng-click="{{item.state}}">{{item.title}}</md-list-item>
+              <md-list-item ng-repeat="item in nav.menu" ng-click="openLink(item.state)">
+                <span>{{item.title}}</span>
+              </md-list-item>
             </md-list>
           </md-content>
 
@@ -49,11 +51,7 @@
             </div>
           </md-toolbar>
 
-          <md-content>
-            <md-list>
-              <md-list-item ng-repeat="item in nav.menu" ng-click="{{item.state}}">{{item.title}}</md-list-item>
-            </md-list>
-          </md-content>
+          
         </div>
       </md-content>
     </md-sidenav>

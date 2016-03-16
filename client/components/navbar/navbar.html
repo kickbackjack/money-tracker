@@ -20,13 +20,12 @@
 
       <md-content>
         <div layout="column">
+          <!-- BUDGET -->
           <md-toolbar>
             <div class="md-toolbar-tools">
               <h2>
-                <span>Account</span>
+                <span>Budget</span>
               </h2>
-              <span flex></span>
-              <span>£123.45</span>
             </div>
           </md-toolbar>
 
@@ -39,19 +38,35 @@
           </md-content>
 
 
+          <!-- ACCOUNTS -->
           <md-toolbar>
             <div class="md-toolbar-tools">
               <h2>
-                <span>Budget</span>
+                <span>Account</span>
               </h2>
               <span flex></span>
-              <md-button ng-click="toggleLeft()" class="md-icon-button" hide-gt-sm>
-                <md-icon md-svg-icon="minimise"></md-icon>
-              </md-button>
+              <span>£123.45</span>
             </div>
           </md-toolbar>
 
-          
+          <md-content>
+            <md-list>
+              <md-list-item ng-repeat="account in accounts" ng-click="openLink(item.state)">
+                <span>{{account.name}}</span>
+                <span flex></span>
+                <span>{{account.current.balance}}</span>
+              </md-list-item>
+
+              <md-divider></md-divider>
+
+              <!-- New Account -->
+              <md-list-item ng-click="openNewAccountModal()">
+                <span>New Account</span>
+              </md-list-item>
+            </md-list>
+          </md-content>
+
+
         </div>
       </md-content>
     </md-sidenav>

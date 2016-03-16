@@ -22,5 +22,6 @@ angular.module('ynabExtensionApp', [
     $mdIconProvider
       .icon('menu', 'bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg', 24)
       .icon('minimise', 'bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_24px.svg', 24)
+      .icon('close', 'bower_components/material-design-icons/navigation/svg/production/ic_close_24px.svg', 24)
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
   });

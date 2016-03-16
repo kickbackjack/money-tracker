@@ -11,14 +11,21 @@ class NavbarController {
     'title': 'Budget',
     'state': 'budget'
   }];
-
-  isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth, $scope, $timeout, $mdSidenav, $log, $location) {
+  constructor(Auth, $scope, $timeout, $http, $mdSidenav, $log, $location, $mdDialog, $mdMedia, socket) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+
+    this.accounts = [];
+
+    // Load / Sync Accounts accross
+    $http.get('/api/accounts').then(response => {
+      $log.log('Loaded all bank accounts from server (' + response.data.length + ' found)');
+      this.accounts = response.data;
+      socket.syncUpdates('accounts', this.accounts);
+    });
 
     /**
      * Supplies a function that will continue to operate until the
@@ -36,6 +43,7 @@ class NavbarController {
         }, wait || 10);
       };
     }
+
     /**
      * Build handler to open/close a SideNav; when animation finishes
      * report completion in console
@@ -50,13 +58,57 @@ class NavbarController {
       }, 200);
     }
 
+    /**
+     * Changes the current $location to the specified URI
+     */
     function openLink(link) {
       $log.debug('Navigating to ' + link);
       $location.path(link);
     }
 
+    /**
+     * New Account Modal Controller
+     */
+    function NewAccountCtrl($scope, $mdDialog, $log) {
+      $scope.availableTypes = [
+          'Checking',
+          'Savings',
+          'Credit Card',
+          'Cash',
+          'Line of Credit'
+      ];
+      
+      $scope.hide = function() {
+        $log.debug('Hiding the dialog');
+        $mdDialog.hide();
+      };
+      $scope.cancel = function() {
+        $log.debug('Cancelling the dialog');
+        $mdDialog.cancel();
+      };
+      $scope.answer = function(answer) {
+        $log.debug('Answering the dialog');
+        $mdDialog.hide(answer);
+      };
+    }
+
+    function openNewAccountModal(ev) {
+      $log.debug('Opening new account modal');
+
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+      $mdDialog.show({
+        controller: NewAccountCtrl,
+        templateUrl: 'app/new-account/new-account.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen
+      });
+    }
+
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.openLink = openLink;
+    $scope.openNewAccountModal = openNewAccountModal;
   }
 }
 
@@ -70,6 +122,8 @@ class LeftCtrl {
     };
   }
 }
+
+
 
 angular.module('ynabExtensionApp')
   .controller('NavbarController', NavbarController)

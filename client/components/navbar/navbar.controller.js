@@ -20,8 +20,6 @@ class NavbarController {
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.toggleLeft = buildDelayedToggler('left');
-
     /**
      * Supplies a function that will continue to operate until the
      * time is up.
@@ -47,10 +45,12 @@ class NavbarController {
         $mdSidenav(navID)
           .toggle()
           .then(function () {
-            $log.debug("Sidebar toggle is done");
+            $log.debug('Sidebar toggle is done');
           });
       }, 200);
     }
+
+    $scope.toggleLeft = buildDelayedToggler('left');
   }
 }
 
@@ -59,7 +59,7 @@ class LeftCtrl {
     $scope.close = function () {
       $mdSidenav('left').close()
         .then(function () {
-          $log.debug("Closing Left Navigation Bar");
+          $log.debug('Closing Left Navigation Bar');
         });
     };
   }

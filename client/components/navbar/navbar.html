@@ -3,7 +3,7 @@
     <md-sidenav
         class="md-sidenav-left"
         md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-md')"
+        md-is-locked-open="$mdMedia('gt-sm')"
         md-whiteframe="4">
 
       <md-toolbar>
@@ -12,7 +12,7 @@
             <span>Money Bags</span>
           </h2>
           <span flex></span>
-          <md-button ng-click="toggleLeft()" class="md-icon-button" hide-gt-md>
+          <md-button ng-click="toggleLeft()" class="md-icon-button" hide-gt-sm>
             <md-icon md-svg-icon="minimise"></md-icon>
           </md-button>
         </div>
@@ -20,7 +20,40 @@
 
       <md-content>
         <div layout="column">
-          <md-button ng-repeat="item in nav.menu" ng-href="{{item.state}}">{{item.title}}</md-button>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>
+                <span>Account</span>
+              </h2>
+              <span flex></span>
+              <span>£123.45</span>
+            </div>
+          </md-toolbar>
+
+          <md-content>
+            <md-list>
+              <md-list-item ng-repeat="item in nav.menu" ng-click="{{item.state}}">{{item.title}}</md-list-item>
+            </md-list>
+          </md-content>
+
+
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>
+                <span>Budget</span>
+              </h2>
+              <span flex></span>
+              <md-button ng-click="toggleLeft()" class="md-icon-button" hide-gt-sm>
+                <md-icon md-svg-icon="minimise"></md-icon>
+              </md-button>
+            </div>
+          </md-toolbar>
+
+          <md-content>
+            <md-list>
+              <md-list-item ng-repeat="item in nav.menu" ng-click="{{item.state}}">{{item.title}}</md-list-item>
+            </md-list>
+          </md-content>
         </div>
       </md-content>
     </md-sidenav>

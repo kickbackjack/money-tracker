@@ -80,8 +80,6 @@ class LeftCtrl {
   }
 }
 
-
-
 angular.module('ynabExtensionApp')
   .controller('NavbarController', NavbarController)
   .controller('LeftCtrl', LeftCtrl);

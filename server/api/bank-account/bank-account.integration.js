@@ -36,7 +36,7 @@ describe('BankAccount API:', function() {
         .post('/api/bank-accounts')
         .send({
           name: 'New BankAccount',
-          info: 'This is the brand new bankAccount!!!'
+          description: 'This is the brand new bankAccount!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -51,7 +51,7 @@ describe('BankAccount API:', function() {
 
     it('should respond with the newly created bankAccount', function() {
       newBankAccount.name.should.equal('New BankAccount');
-      newBankAccount.info.should.equal('This is the brand new bankAccount!!!');
+      newBankAccount.description.should.equal('This is the brand new bankAccount!!!');
     });
 
   });
@@ -79,7 +79,7 @@ describe('BankAccount API:', function() {
 
     it('should respond with the requested bankAccount', function() {
       bankAccount.name.should.equal('New BankAccount');
-      bankAccount.info.should.equal('This is the brand new bankAccount!!!');
+      bankAccount.description.should.equal('This is the brand new bankAccount!!!');
     });
 
   });
@@ -92,7 +92,7 @@ describe('BankAccount API:', function() {
         .put('/api/bank-accounts/' + newBankAccount._id)
         .send({
           name: 'Updated BankAccount',
-          info: 'This is the updated bankAccount!!!'
+          description: 'This is the updated bankAccount!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -111,7 +111,7 @@ describe('BankAccount API:', function() {
 
     it('should respond with the updated bankAccount', function() {
       updatedBankAccount.name.should.equal('Updated BankAccount');
-      updatedBankAccount.info.should.equal('This is the updated bankAccount!!!');
+      updatedBankAccount.description.should.equal('This is the updated bankAccount!!!');
     });
 
   });

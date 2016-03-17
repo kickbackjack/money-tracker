@@ -18,9 +18,6 @@ function onConnect(socket) {
 
   // Insert sockets below
   require('../api/bank-account/bank-account.socket').register(socket);
-  require('../api/account/account.socket').register(socket);
-  require('../api/transaction/transaction.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 
 }
 

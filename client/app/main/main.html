@@ -11,49 +11,36 @@
     </div>
   </md-toolbar>
 
-  <md-content>
-    <form class="thing-form">
-      <label>Syncs in realtime across clients</label>
-      <p class="input-group">
-        <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="main.newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="main.addThing()">Add New</button>
-      </span>
-      </p>
-    </form>
+  <md-content layout="row">
 
-    <div layout="row">
-      <md-input-container class="md-block">
-        <label>Payee</label>
-        <input required name="payee" ng-model="transactionForm.payee">
-        <div ng-messages="transactionForm.payee.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
+    <md-input-container class="md-block">
+      <label>Payee</label>
+      <input required name="payee" ng-model="transactionForm.payee"></input>
+      <div ng-messages="transactionForm.payee.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
 
-      <md-datepicker required name="date" ng-model="transactionForm.datecreated"></input>
+    <md-datepicker required name="date" ng-model="transactionForm.datecreated"></md-datepicker>
 
-        <md-input-container class="md-block">
-          <label>Description</label>
-          <input md-maxlength="120" required name="description" ng-model="transactionForm.description"></input>
-        </md-input-container>
+    <md-input-container class="md-block">
+      <label>Description</label>
+      <input md-maxlength="120" required name="description" ng-model="transactionForm.description"></input>
+    </md-input-container>
 
-        <md-input-container flex class="md-block">
-          <label>Income</label>
-          <input required name="income" ng-model="transactionForm.income"></input>
-        </md-input-container>
+    <md-input-container flex class="md-block">
+      <label>Income</label>
+      <input required name="income" ng-model="transactionForm.income"></input>
+    </md-input-container>
 
-        <md-input-container flex class="md-block">
-          <label>Outcome</label>
-          <input required name="outcome" ng-model="transactionForm.outcome"></input>
-        </md-input-container>
+    <md-input-container flex class="md-block">
+      <label>Outcome</label>
+      <input required name="outcome" ng-model="transactionForm.outcome"></input>
+    </md-input-container>
 
-        <md-input-container class="md-block">
-          <md-checkbox ng-model="transactionForm.cleared" aria-label="Cleared?"></md-checkbox>
-        </md-input-container>
+    <md-input-container class="md-block">
+      <md-checkbox ng-model="transactionForm.cleared" aria-label="Cleared?"></md-checkbox>
+    </md-input-container>
 
-
-        </form>
-    </div>
-
+  </md-content>
 </div>

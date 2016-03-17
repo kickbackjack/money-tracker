@@ -15,8 +15,36 @@ describe('Controller: MainController', function() {
   // Initialize the controller and a mock scope
   beforeEach(inject(function(_$httpBackend_, $controller, $rootScope, $state) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    $httpBackend.expectGET('/api/bank-accounts')
+      .respond([{
+        name: 'Main Account',
+        description: 'This is my main bank account',
+        type: 'Checking',
+        active: true,
+        transactions: [
+          {
+            datecreated: new Date(),
+            cleared: false,
+            income: 1900.00,
+            outcome: 0,
+            description: 'Salary',
+            category: 'Income',
+            payee: 'Work'
+          },
+          {
+            datecreated: new Date(),
+            cleared: false,
+            income: 0,
+            outcome: 1140.00,
+            description: 'Big Payment',
+            category: 'Mortgage',
+            payee: 'Mortgage Company'
+          }],
+        current: {
+          balance: 760.00,
+          unclearedbalance: 760.00
+        }
+      }]);
 
     scope = $rootScope.$new();
     state = $state;
@@ -25,8 +53,8 @@ describe('Controller: MainController', function() {
     });
   }));
 
-  it('should attach a list of things to the controller', function() {
+  it('should attach a list of accounts to the controller', function() {
     $httpBackend.flush();
-    expect(MainController.awesomeThings.length).toBe(4);
+    expect(MainController.accounts.length).toBe(1);
   });
 });

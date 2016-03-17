@@ -1,2 +1,17 @@
-<div>This is the bank-account view.</div>
-<div flex ui-view></div>
+<div layout="column">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Open Sidebar" hide-gt-sm>
+        <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+      <h2>
+        <span>All Accounts</span>
+      </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <div>This is the bank-account view.</div>
+  <div flex ui-view></div>
+
+</div>

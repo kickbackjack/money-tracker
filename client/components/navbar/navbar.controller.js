@@ -3,18 +3,15 @@
 class NavbarController {
 
   //start-non-standard
-  menu = [{
-    'title': 'Main',
-    'state': 'main'
-  },
-  {
-    'title': 'Budget',
-    'state': 'budget'
-  },
-  {
-    'title': 'Account',
-    'state': 'bank-account/list'
-  }];
+  menu = [
+    {
+      'title': 'Budget',
+      'state': 'budget'
+    },
+    {
+      'title': 'Account',
+      'state': 'bank-account/list'
+    }];
   //end-non-standard
 
   constructor(Auth, $scope, $timeout, $mdSidenav, $log, $location, BankAccount) {
@@ -41,7 +38,7 @@ class NavbarController {
       var timer;
       return function debounced() {
         var context = $scope,
-            args = Array.prototype.slice.call(arguments);
+          args = Array.prototype.slice.call(arguments);
         $timeout.cancel(timer);
         timer = $timeout(function() {
           timer = undefined;

@@ -1,16 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/accounts              ->  index
- * POST    /api/accounts              ->  create
- * GET     /api/accounts/:id          ->  show
- * PUT     /api/accounts/:id          ->  update
- * DELETE  /api/accounts/:id          ->  destroy
+ * GET     /api/bank-accounts              ->  index
+ * POST    /api/bank-accounts              ->  create
+ * GET     /api/bank-accounts/:id          ->  show
+ * PUT     /api/bank-accounts/:id          ->  update
+ * DELETE  /api/bank-accounts/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import Account from './account.model';
+import BankAccount from './bank-account.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -59,43 +59,43 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Accounts
+// Gets a list of BankAccounts
 export function index(req, res) {
-  Account.findAsync()
+  BankAccount.findAsync()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Account from the DB
+// Gets a single BankAccount from the DB
 export function show(req, res) {
-  Account.findByIdAsync(req.params.id)
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Account in the DB
+// Creates a new BankAccount in the DB
 export function create(req, res) {
-  Account.createAsync(req.body)
+  BankAccount.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Account in the DB
+// Updates an existing BankAccount in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Account.findByIdAsync(req.params.id)
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Account from the DB
+// Deletes a BankAccount from the DB
 export function destroy(req, res) {
-  Account.findByIdAsync(req.params.id)
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

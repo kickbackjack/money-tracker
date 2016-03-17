@@ -79,8 +79,12 @@ angular.module('ynabExtensionApp')
         };
       }
 
+      /**
+       * Opens a new account dialog window
+       * @param ev
+       */
       bankAccount.openAddAccountDialog = function(ev) {
-        $log.debug('Opening "New account" modal');
+        $log.debug('Opening "Add Account" dialog');
         $mdDialog.show({
           controller: NewAccountCtrl,
           templateUrl: 'app/services/new-account/new-account.html',

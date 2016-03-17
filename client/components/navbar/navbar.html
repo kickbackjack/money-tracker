@@ -51,7 +51,7 @@
 
           <md-content>
             <md-list>
-              <md-list-item ng-repeat="account in accounts">
+              <md-list-item ng-repeat="account in accounts" ng-click="openLink('bank-account/' + account._id)">
                 <span>{{account.name}}</span>
                 <span flex></span>
                 <span>{{account.current.balance}}</span>

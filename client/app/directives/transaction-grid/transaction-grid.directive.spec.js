@@ -1,10 +1,10 @@
 'use strict';
 
-describe('Directive: transaction', function () {
+describe('Directive: transactionGrid', function () {
 
   // load the directive's module and view
   beforeEach(module('ynabExtensionApp'));
-  beforeEach(module('app/directives/transaction/transaction.html'));
+  beforeEach(module('app/directives/transaction-grid/transaction-grid.html'));
 
   var element, scope;
 
@@ -13,9 +13,9 @@ describe('Directive: transaction', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<transaction></transaction>');
+    element = angular.element('<transaction-grid></transaction-grid>');
     element = $compile(element)(scope);
     scope.$apply();
-    expect(element.text()).toBe('this is the transaction directive');
+    expect(element.text()).toBe('this is the transactionGrid directive');
   }));
 });

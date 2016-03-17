@@ -13,7 +13,7 @@ class NavbarController {
   },
   {
     'title': 'Account',
-    'state': 'bank-account'
+    'state': 'bank-account/list'
   }];
   //end-non-standard
 

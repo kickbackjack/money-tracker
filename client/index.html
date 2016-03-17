@@ -14,6 +14,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+      <link rel="stylesheet" href="bower_components/c3/c3.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -29,7 +30,7 @@
 
     <!-- Add your site or application content here -->
     <navbar></navbar>
-    <div ui-view=""></div>
+    <div flex ui-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -62,6 +63,8 @@
       <script src="bower_components/angular-aria/angular-aria.js"></script>
       <script src="bower_components/angular-messages/angular-messages.js"></script>
       <script src="bower_components/angular-material/angular-material.js"></script>
+      <script src="bower_components/d3/d3.js"></script>
+      <script src="bower_components/c3/c3.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -89,7 +92,7 @@
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
       <script src="components/auth/user.service.js"></script>
-      <script src="components/footer/footer.directive.js"></script>
+      <script src="components/charts/sparkline/sparkline.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>

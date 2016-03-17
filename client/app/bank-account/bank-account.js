@@ -17,17 +17,4 @@ angular.module('ynabExtensionApp')
       	url: '/:id',
       	templateUrl: 'app/bank-account/bank-account.detail.html'
       });
-
-    //   $stateProvider
-    //   .state('bank-account', {
-    //   	views: {
-    //   		'all': {
-				// templateUrl: 'app/bank-account/bank-account.html',
-				// controller: 'BankAccountCtrl'
-    //   		},
-    //   		'detail': {
-				// templateUrl: 'app/bank-account/bank-account-all.html'
-    //   		}
-    //   	}
-    //   });
   });

@@ -5,19 +5,18 @@
 class MainController {
 
   constructor($http, $scope, socket, BankAccount) {
-    this.$http = $http;
-    this.accounts = [];
+    $scope.accounts = BankAccount.accounts;
 
     $http.get('/api/bank-accounts').then(response => {
-      this.accounts = response.data;
-      socket.syncUpdates('bank-account', this.accounts);
+      $scope.accounts = response.data;
+      socket.syncUpdates('bankAccount', $scope.accounts);
     })
 
     $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('bank-account');
+      socket.unsyncUpdates('bankAccount');
     });
 
-    addBankAccount(account) {
+    $scope.addBankAccount = function(account) {
       BankAccount.addBankAccount(account);
     }
   }

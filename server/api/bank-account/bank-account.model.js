@@ -25,4 +25,4 @@ var BankAccountSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('BankAccount', BankAccountSchema);
-export default mongoose.model('Transaction', TransactionSchema);
+// export default mongoose.model('Transaction', TransactionSchema);

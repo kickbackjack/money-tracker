@@ -23,9 +23,12 @@ class NavbarController {
     this.getCurrentUser = Auth.getCurrentUser;
 
     $scope.accounts = BankAccount.accounts;
-    $scope.$watch(BankAccount.accounts, function(newVal) {
+
+    $scope.$watch(function() {
+      return BankAccount.accounts
+    }, function(newVal) {
       if (newVal) {
-        $log.debug('Accounts list has changed (' + newVal.length + 'found)');
+        $log.debug('Accounts list has changed (' + newVal.length + ' found)');
         $scope.accounts = newVal;
       }
     }, true);

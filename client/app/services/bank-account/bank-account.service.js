@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('ynabExtensionApp')
-  .factory('BankAccount', function ($log, $mdMedia, $mdDialog, $http) {
+  .factory('BankAccount', function ($log, $mdMedia, $mdDialog, $http, socket) {
       // All available bank account types
       var bankAccount = {};
+
+      bankAccount.accounts = [];
 
       bankAccount.availableTypes = [
         'Checking',
@@ -26,23 +28,20 @@ angular.module('ynabExtensionApp')
         }
       };
 
-      bankAccount.getAccounts = function() {
-        $log.debug('Adding account ' + account);
-        $http.get('/api/accounts')
-          .then(function() {
-            $log.log('Loaded all bank accounts from server (' + response.data.length + ' found)');
+      bankAccount.getBankAccounts = function() {
+        $log.debug('Getting all accounts');
+        $http.get('/api/bank-accounts/')
+          .then(function(response) {
+            $log.debug('Loaded all bank accounts from server (' + response.data.length + ' found)');
             bankAccount.accounts = response.data;
-            socket.syncUpdates('account', $scope.accounts);
+            socket.syncUpdates('bankAccount', bankAccount.accounts);
           });
       };
-
-      //  $scope.$on('$destroy', function() {
-      //    socket.unsyncUpdates('account');
-      //  });
+      bankAccount.getBankAccounts(); // Execute on initialisation
 
       bankAccount.addAccount = function(account) {
-        $log.debug('Adding account ' + account);
-        return $http.post('/api/accounts/', account)
+        $log.debug('Adding account ' + account.name);
+        return $http.post('/api/bank-accounts/', account)
           .then(function(response) {
             $log.log('Add account successful');
             var status = response.status;
@@ -59,6 +58,7 @@ angular.module('ynabExtensionApp')
        */
       function NewAccountCtrl($scope, $mdDialog, $log) {
         $scope.account = bankAccount.defaultAccount;
+        $scope.availableTypes = bankAccount.availableTypes;
 
         $scope.hide = function() {
           $log.debug('Hiding the dialog');
@@ -69,7 +69,7 @@ angular.module('ynabExtensionApp')
           $mdDialog.cancel();
         };
         $scope.addAccount = function() {
-          $log.debug('Submit Button Clicked');
+          $log.debug('Submit button clicked');
 
           if ($scope.account) {
             bankAccount.addAccount($scope.account);
@@ -80,15 +80,14 @@ angular.module('ynabExtensionApp')
       }
 
       bankAccount.openAddAccountDialog = function(ev) {
-        $log.debug('Opening new account modal');
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+        $log.debug('Opening "New account" modal');
         $mdDialog.show({
           controller: NewAccountCtrl,
           templateUrl: 'app/services/new-account/new-account.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
-          fullscreen: useFullScreen
+          fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
         });
       };
 

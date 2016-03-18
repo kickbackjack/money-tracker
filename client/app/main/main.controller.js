@@ -23,7 +23,7 @@
     }
   }
 
-  angular.module('ynabExtensionApp')
+  angular.module('moneyBagsApp')
     .controller('MainController', MainController);
 
 })();

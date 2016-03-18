@@ -3,7 +3,7 @@
 describe('Controller: MainController', function() {
 
   // load the controller's module
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
   beforeEach(module('stateMock'));
   beforeEach(module('socketMock'));
 

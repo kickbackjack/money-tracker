@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .directive('navbar', () => ({
     templateUrl: 'components/navbar/navbar.html',
     restrict: 'E',

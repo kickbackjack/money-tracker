@@ -86,6 +86,6 @@ class LeftCtrl {
   }
 }
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('NavbarController', NavbarController)
   .controller('LeftCtrl', LeftCtrl);

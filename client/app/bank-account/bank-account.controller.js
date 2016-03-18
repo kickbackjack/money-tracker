@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('BankAccountCtrl', function ($scope) {
 
     // TODO: Replace with data received from server
@@ -25,5 +25,5 @@ angular.module('ynabExtensionApp')
       }
     ];
 
-    
+
   });

@@ -26,7 +26,7 @@ function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
   };
 }
 
-angular.module('ynabExtensionApp.auth')
+angular.module('moneyBagsApp.auth')
   .factory('authInterceptor', authInterceptor);
 
 })();

@@ -3,7 +3,7 @@
 describe('Controller: BudgetCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
 
   var BudgetCtrl, scope;
 

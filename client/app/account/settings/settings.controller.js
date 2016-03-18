@@ -25,5 +25,5 @@ class SettingsController {
   }
 }
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('SettingsController', SettingsController);

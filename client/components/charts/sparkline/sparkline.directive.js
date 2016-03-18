@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .directive('sparkline', function ($timeout, $window, $log) {
   	return {
       templateUrl: 'components/charts/sparkline/sparkline.html',

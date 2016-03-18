@@ -3,7 +3,7 @@
 describe('Controller: BankAccountCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
 
   var BankAccountCtrl, scope;
 

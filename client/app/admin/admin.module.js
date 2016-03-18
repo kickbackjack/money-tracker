@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp.admin', [
-  'ynabExtensionApp.auth',
+angular.module('moneyBagsApp.admin', [
+  'moneyBagsApp.auth',
   'ui.router'
 ]);

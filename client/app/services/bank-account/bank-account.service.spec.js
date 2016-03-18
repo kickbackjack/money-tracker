@@ -3,7 +3,7 @@
 describe('Service: bankAccount', function () {
 
   // load the service's module
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
 
   // instantiate service
   var bankAccount;

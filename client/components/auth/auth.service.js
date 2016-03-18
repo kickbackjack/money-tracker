@@ -183,7 +183,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   return Auth;
 }
 
-angular.module('ynabExtensionApp.auth')
+angular.module('moneyBagsApp.auth')
   .factory('Auth', AuthService);
 
 })();

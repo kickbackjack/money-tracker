@@ -3,7 +3,7 @@
 describe('Directive: transactionGrid', function () {
 
   // load the directive's module and view
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
   beforeEach(module('app/directives/transaction-grid/transaction-grid.html'));
 
   var element, scope;

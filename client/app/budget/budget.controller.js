@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('BudgetCtrl', function ($scope) {
     $scope.message = 'Hello';
   });

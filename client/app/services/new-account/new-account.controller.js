@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('Tmp', function ($scope, $mdDialog) {
 	  $scope.hide = function() {
 	    $mdDialog.hide();

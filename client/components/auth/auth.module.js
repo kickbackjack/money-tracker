@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('ynabExtensionApp.auth', [
-  'ynabExtensionApp.constants',
-  'ynabExtensionApp.util',
+angular.module('moneyBagsApp.auth', [
+  'moneyBagsApp.constants',
+  'moneyBagsApp.util',
   'ngCookies',
   'ui.router'
 ])

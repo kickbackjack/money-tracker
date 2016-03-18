@@ -1,7 +1,7 @@
 (function(angular, undefined) {
 'use strict';
 
-angular.module('ynabExtensionApp.constants', [])
+angular.module('moneyBagsApp.constants', [])
 
 .constant('appConfig', {userRoles:['guest','user','admin']})
 

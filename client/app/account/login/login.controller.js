@@ -29,5 +29,5 @@ class LoginController {
   }
 }
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('LoginController', LoginController);

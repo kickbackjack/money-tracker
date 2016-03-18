@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .factory('Modal', function($rootScope, $modal) {
     /**
      * Opens a modal

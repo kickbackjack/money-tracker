@@ -6,7 +6,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/ynabextension-dev'
+    uri: 'mongodb://localhost/moneybags-dev'
   },
 
   // Seed database on startup

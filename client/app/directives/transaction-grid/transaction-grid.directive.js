@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .directive('transactionGrid', function () {
     return {
       templateUrl: 'app/directives/transaction-grid/transaction-grid.html',

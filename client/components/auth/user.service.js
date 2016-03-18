@@ -21,7 +21,7 @@ function UserResource($resource) {
   });
 }
 
-angular.module('ynabExtensionApp.auth')
+angular.module('moneyBagsApp.auth')
   .factory('User', UserResource);
 
 })();

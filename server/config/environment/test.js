@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/ynabextension-test'
+    uri: 'mongodb://localhost/moneybags-test'
   },
   sequelize: {
     uri: 'sqlite://',

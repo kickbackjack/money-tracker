@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('bank-account', {

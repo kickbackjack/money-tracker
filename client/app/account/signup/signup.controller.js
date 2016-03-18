@@ -39,5 +39,5 @@ class SignupController {
   }
 }
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .controller('SignupController', SignupController);

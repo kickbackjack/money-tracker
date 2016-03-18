@@ -3,7 +3,7 @@
 describe('Directive: sparkline', function () {
 
   // load the directive's module and view
-  beforeEach(module('ynabExtensionApp'));
+  beforeEach(module('moneyBagsApp'));
   beforeEach(module('../components/charts/sparkline/sparkline.html'));
 
   var element, scope;

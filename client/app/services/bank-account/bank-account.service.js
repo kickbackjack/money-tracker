@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ynabExtensionApp')
+angular.module('moneyBagsApp')
   .factory('BankAccount', function ($log, $mdMedia, $mdDialog, $http, socket) {
       // All available bank account types
       var bankAccount = {};

@@ -11,7 +11,8 @@ angular.module('ynabExtensionApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'ngMaterial'
+  'ngMaterial',
+  'md.data.table'
 ])
   .config(function($urlRouterProvider, $locationProvider, $mdIconProvider) {
     $urlRouterProvider

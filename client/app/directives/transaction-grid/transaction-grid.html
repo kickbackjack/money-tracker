@@ -1,38 +1,43 @@
-<div>this is the transactionGrid directive</div>
-<div ng-repeat="transaction in transactions" flex layout="row">
-  <span>TODO {{transaction.account}}</span>
-  <span>{{transaction.payee}}</span>
-  <span>{{transaction.datecreated}}</span>
-  <span>{{transaction.date}}</span>
-  <span>{{transaction.income}}</span>
-  <span>{{transaction.outcome}}</span>
-  <span>{{transaction.cleared}}</span>
-</div>
 
+<md-card flex>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>
+        <span>Transactions</span>
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Add Transaction">
+        <md-icon md-svg-icon="add"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-card-content>
+    <md-table-container>
+      <table md-table md-row-select ng-model="selected" md-progress="promise">
+        <thead md-head md-order="query.order" md-on-reorder="onReorder">
+        <tr md-row>
+          <th md-column><span>Account</span></th>
+          <th md-column><span>Payee</span></th>
+          <th md-column><span>Date Created</span></th>
+          <th md-column md-numeric><span>Income</span></th>
+          <th md-column md-numeric><span>Outcome</span></th>
+          <th md-column><span>Cleared</span></th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row md-select="transaction" md-select-id="{{transaction._id}}" md-auto-select ng-repeat="transaction in transactions">
+          <td md-cell>{{transaction.account}}</td>
+          <td md-cell>{{transaction.payee}}</td>
+          <td md-cell>{{transaction.datecreated}}</td>
+          <td md-cell>{{transaction.income}}</td>
+          <td md-cell>{{transaction.outcome}}</td>
+          <td md-cell>{{transaction.cleared}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </md-table-container>
 
-<md-table-container>
-  <table md-table md-row-select ng-model="selected" md-progress="promise">
-    <thead md-head md-order="query.order" md-on-reorder="onReorder">
-    <tr md-row>
-      <th md-column><span>Account</span></th>
-      <th md-column><span>Payee</span></th>
-      <th md-column>Date Created</th>
-      <th md-column md-numeric>Income</th>
-      <th md-column md-numeric>Outcome</th>
-      <th md-column md-numeric>Cleared</th>
-    </tr>
-    </thead>
-    <tbody md-body>
-    <tr md-row md-select="dessert" md-select-id="{{transaction._id}}" md-auto-select ng-repeat="transaction in selectedTransactions">
-      <td md-cell>{{transaction.account}}</td>
-      <td md-cell>{{transaction.payee}}</td>
-      <td md-cell>{{transaction.datecreated}}</td>
-      <td md-cell>{{transaction.income}}</td>
-      <td md-cell>{{transaction.outcome}}</td>
-      <td md-cell>{{transaction.cleared}}</td>
-    </tr>
-    </tbody>
-  </table>
-</md-table-container>
+    <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{transactions.count}}" md-on-paginate="onPaginate" md-page-select></md-table-pagination>
 
-<md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{transaction.count}}" md-on-paginate="onPaginate" md-page-select></md-table-pagination>
+  </md-card-content>
+</md-card>

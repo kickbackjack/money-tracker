@@ -10,20 +10,19 @@ angular.module('moneyBagsApp')
       restrict: 'E',
       link: function (scope) {
         scope.selected = [];
-        scope.selectedTransactions = scope.transactions;
 
         scope.query = {
-          order: 'name',
+          order: 'payee',
           limit: 5,
           page: 1
         };
 
         function getTransactions(query) {
-          scope.promise = transactions.desserts.get(query, success).$promise;
+          scope.promise = scope.transactions.get(query, success).$promise;
         }
 
         function success(transactions) {
-          scope.selectedTransactions = transactions;
+          scope.transactions = transactions;
         }
 
         scope.onPaginate = function (page, limit) {

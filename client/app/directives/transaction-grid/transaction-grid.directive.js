@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('moneyBagsApp')
-  .directive('transactionGrid', function () {
+  .directive('transactionGrid', function (BankAccount) {
     return {
       templateUrl: 'app/directives/transaction-grid/transaction-grid.html',
       scope: {
@@ -32,6 +32,10 @@ angular.module('moneyBagsApp')
         scope.onReorder = function (order) {
           getTransactions(angular.extend({}, scope.query, {order: order}));
         };
+
+        scope.addTransaction = function () {
+
+        }
       }
     };
   });

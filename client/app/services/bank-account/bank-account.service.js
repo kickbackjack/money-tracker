@@ -53,6 +53,32 @@ angular.module('moneyBagsApp')
           })
       };
 
+      bankAccount.getAccountByName = function(account) {
+        return account.name === 'Main Account';
+      };
+
+      bankAccount.addTransaction = function(accountName, transaction) {
+        $log.debug('Adding transaction to ' + accountName);
+
+        var account = bankAccount.accounts.find(bankAccount.getAccountByName);
+
+        if (! account.transactions) {
+          account.transactions = [];
+        }
+        account.transactions.push(transaction);
+
+        return $http.put('/api/bank-accounts/' + account._id, account)
+          .then(function(response) {
+            $log.log('Add transaction successful');
+            var status = response.status;
+            var accounts = response.data;
+          }, function(response) {
+            $log.error('Add account failed');
+            var status = response.status;
+            var accounts = [];
+          })
+      };
+
       /**
        * New Account Modal Controller
        */
@@ -88,6 +114,47 @@ angular.module('moneyBagsApp')
         $mdDialog.show({
           controller: NewAccountCtrl,
           templateUrl: 'app/services/new-account/new-account.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+        });
+      };
+
+      /**
+       * New Account Modal Controller
+       */
+      function NewTransactionCtrl($scope, $mdDialog, $log) {
+        $scope.accounts = bankAccount.accounts;
+
+        $scope.hide = function() {
+          $log.debug('Hiding the dialog');
+          $mdDialog.hide();
+        };
+        $scope.cancel = function() {
+          $log.debug('Cancelling the dialog');
+          $mdDialog.cancel();
+        };
+        $scope.addTransaction = function() {
+          $log.debug('Submit button clicked');
+
+          if ($scope.account) {
+            bankAccount.addTransaction($scope.account.name, $scope.transaction);
+            $scope.transaction = {}; // Reset transaction screen
+            $mdDialog.hide();
+          }
+        };
+      }
+
+      /**
+       * Opens a new account dialog window
+       * @param ev
+       */
+      bankAccount.openAddTransactionDialog = function(ev) {
+        $log.debug('Opening "Add Account" dialog');
+        $mdDialog.show({
+          controller: NewTransactionCtrl,
+          templateUrl: 'app/services/bank-account/new-transaction.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,

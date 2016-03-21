@@ -1,0 +1,67 @@
+<md-dialog aria-label="New Transaction" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>New Transaction</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Account</label>
+          <md-select ng-model="account.name">
+            <md-option ng-repeat="account in accounts" value="{{account.name}}">
+              {{account.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-datepicker ng-model="transaction.date" md-placeholder="Enter date"></md-datepicker>
+
+        <md-input-container class="md-block">
+          <label>Payee</label>
+          <input required name="name" ng-model="transaction.payee">
+          <div ng-messages="account.name.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Category</label>
+          <input required name="category" ng-model="transaction.category">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Description (optional)</label>
+          <input required name="description" ng-model="transaction.description">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Income</label>
+          <input required name="income" type="number" step="any" ng-model="transaction.income">
+          <div ng-messages="account.balance.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Outcome</label>
+          <input required name="income" type="number" step="any" ng-model="transaction.outcome">
+          <div ng-messages="account.balance.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click="addTransaction()" style="margin-right:20px;">Add Account</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

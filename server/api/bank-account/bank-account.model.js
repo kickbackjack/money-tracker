@@ -3,6 +3,7 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var TransactionSchema = new mongoose.Schema({
+  datetransaction: { type: Date, default: Date.now },
   datecreated: { type: Date, default: Date.now },
   cleared: Boolean,
   income: Number,
@@ -14,6 +15,7 @@ var TransactionSchema = new mongoose.Schema({
 
 var BankAccountSchema = new mongoose.Schema({
   name: String,
+  datecreated: { type: Date, default: Date.now },
   description: String,
   type: String,
   active: Boolean,

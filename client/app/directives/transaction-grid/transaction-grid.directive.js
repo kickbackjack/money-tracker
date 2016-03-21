@@ -33,8 +33,8 @@ angular.module('moneyBagsApp')
           getTransactions(angular.extend({}, scope.query, {order: order}));
         };
 
-        scope.addTransaction = function () {
-
+        scope.addTransaction = function (ev) {
+          BankAccount.openAddTransactionDialog(ev);
         }
       }
     };

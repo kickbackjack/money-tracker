@@ -1,16 +1,18 @@
 'use strict';
 
-class NavbarController {
+class SidenavController {
 
   //start-non-standard
   menu = [
     {
       'title': 'Budget',
-      'state': 'budget'
+      'state': 'budget',
+      'icon': 'budget'
     },
     {
-      'title': 'Account',
-      'state': 'bank-account/list'
+      'title': 'All Accounts',
+      'state': 'bank-account/list',
+      'icon': 'account'
     }];
   //end-non-standard
 
@@ -19,7 +21,7 @@ class NavbarController {
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.accounts = BankAccount.accounts;
+    $scope.accounts = [];
 
     $scope.$watch(function() {
       return BankAccount.accounts
@@ -87,5 +89,5 @@ class LeftCtrl {
 }
 
 angular.module('moneyBagsApp')
-  .controller('NavbarController', NavbarController)
+  .controller('SidenavController', SidenavController)
   .controller('LeftCtrl', LeftCtrl);

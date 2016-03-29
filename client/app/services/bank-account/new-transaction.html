@@ -1,14 +1,14 @@
-<md-dialog aria-label="New Transaction" ng-cloak>
+<md-dialog class="small-container" aria-label="New Transaction" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>New Transaction</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="close" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
   <form>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>New Transaction</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="close" aria-label="Close dialog"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content">
         <md-input-container class="md-block">

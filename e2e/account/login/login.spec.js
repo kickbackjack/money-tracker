@@ -56,7 +56,7 @@ describe('Login View', function() {
     it('should login a user and redirecting to "/"', function() {
       page.login(testUser);
 
-      var navbar = require('../../components/navbar/navbar.po');
+      var sidenav = require('../../components/sidenav/sidenav.po');
 
       expect(browser.getCurrentUrl()).toBe(config.baseUrl + '/');
       expect(navbar.navbarAccountGreeting.getText()).toBe('Hello ' + testUser.name);

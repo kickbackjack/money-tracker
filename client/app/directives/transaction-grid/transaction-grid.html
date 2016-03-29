@@ -27,7 +27,7 @@
         <tr md-row md-select="transaction" md-select-id="{{transaction._id}}" md-auto-select ng-repeat="transaction in transactions">
           <td md-cell>{{transaction.account}}</td>
           <td md-cell>{{transaction.payee}}</td>
-          <td md-cell>{{transaction.datecreated}}</td>
+          <td md-cell>{{transaction.datecreated | date : 'dd-MM-yy'}}</td>
           <td md-cell>{{transaction.income}}</td>
           <td md-cell>{{transaction.outcome}}</td>
           <td md-cell>{{transaction.cleared}}</td>

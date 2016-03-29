@@ -67,6 +67,16 @@ angular.module('moneyBagsApp')
         }
         account.transactions.push(transaction);
 
+        $log.log('Transaction below:');
+        $log.log(transaction);
+
+        $log.log('Account below:');
+        $log.log('Account ID: ' + account._id);
+        for (var i = 0; i < account.transactions.length; i++) {
+          $log.log(account.transactions[i]);
+        }
+        $log.log(account);
+
         return $http.put('/api/bank-accounts/' + account._id, account)
           .then(function(response) {
             $log.log('Add transaction successful');
@@ -138,7 +148,9 @@ angular.module('moneyBagsApp')
         $scope.addTransaction = function() {
           $log.debug('Submit button clicked');
 
-          if ($scope.account) {
+          if ($scope.transaction) {
+
+
             bankAccount.addTransaction($scope.account.name, $scope.transaction);
             $scope.transaction = {}; // Reset transaction screen
             $mdDialog.hide();

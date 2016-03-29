@@ -15,9 +15,14 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
-md-dialog {
-	max-width: 520px;
-	width: 80%;
+//md-dialog {
+//	max-width: 520px;
+//	width: 80%;
+//}
+
+.small-container {
+  max-width: 520px;
+  width: 80%;
 }
 
 // Component styles are injected through grunt

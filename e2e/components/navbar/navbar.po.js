@@ -7,9 +7,9 @@
 
 var NavbarComponent = function() {
   this.navbar = element(by.css('.navbar'));
-  this.navbarHeader = this.navbar.element(by.css('.navbar-header'));
-  this.navbarNav = this.navbar.element(by.css('#navbar-main .nav.navbar-nav:not(.navbar-right)'));
-  this.navbarAccount = this.navbar.element(by.css('#navbar-main .nav.navbar-nav.navbar-right'));
+  this.navbarHeader = this.navbar.element(by.css('.sidenav-header'));
+  this.navbarNav = this.navbar.element(by.css('#sidenav-main .nav.sidenav-nav:not(.sidenav-right)'));
+  this.navbarAccount = this.navbar.element(by.css('#sidenav-main .nav.sidenav-nav.sidenav-right'));
   this.navbarAccountGreeting = this.navbarAccount.element(by.binding('getCurrentUser().name'));
 };
 

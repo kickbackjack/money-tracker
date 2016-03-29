@@ -6,6 +6,31 @@ import {Schema} from 'mongoose';
 
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
+var TransactionSchema = new mongoose.Schema({
+  datetransaction: { type: Date, default: Date.now },
+  datecreated: { type: Date, default: Date.now },
+  cleared: Boolean,
+  income: Number,
+  outcome: Number,
+  description: String,
+  category: String,
+  payee: String
+});
+
+var BankAccountSchema = new mongoose.Schema({
+  _creator : { type: Number, ref: 'User' },
+  name: String,
+  datecreated: { type: Date, default: Date.now },
+  description: String,
+  type: String,
+  active: Boolean,
+  transactions: [TransactionSchema],
+  current: {
+    balance: Number,
+    unclearedbalance: Number
+  }
+});
+
 var UserSchema = new Schema({
   name: String,
   email: {
@@ -16,6 +41,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  accounts: [BankAccountSchema],
   password: String,
   provider: String,
   salt: String,

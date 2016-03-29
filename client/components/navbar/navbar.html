@@ -1,3 +1,13 @@
-<div ng-controller="NavbarController" layout="column" flex ng-cloak>
-  I am a navbar!
-</div>
+<md-toolbar ng-controller="NavbarController" md-whiteframe="1">
+  <div class="md-toolbar-tools">
+    <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Open Sidebar" hide-gt-sm>
+      <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <h2>
+      <span>Money Bags</span>
+    </h2>
+    <span flex></span>
+    <md-button>Login</md-button>
+    <md-button>Register</md-button>
+  </div>
+</md-toolbar>

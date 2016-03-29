@@ -24,8 +24,8 @@
 
         <md-input-container class="md-block">
           <label>Payee</label>
-          <input required name="name" ng-model="transaction.payee">
-          <div ng-messages="account.name.$error">
+          <input required name="payee" ng-model="transaction.payee">
+          <div ng-messages="transaction.payee.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>

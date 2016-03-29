@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('moneyBagsApp')
-  .factory('BankAccount', function ($log, $mdMedia, $mdDialog, $http, socket) {
+  .factory('BankAccount', function ($mdMedia, $mdDialog, $http, $log, socket) {
       // All available bank account types
       var bankAccount = {};
 
@@ -15,6 +15,12 @@ angular.module('moneyBagsApp')
         'Line of Credit'
       ];
 
+      $http.get('/api/bank-accounts')
+        .then(response => {
+          bankAccount.accounts = response.data;
+          socket.syncUpdates('bankAccount', bankAccount.accounts);
+        });
+
       // Default account details
       bankAccount.defaultAccount = {
         name: '',
@@ -27,17 +33,6 @@ angular.module('moneyBagsApp')
           unclearedbalance: 0
         }
       };
-
-      bankAccount.getBankAccounts = function() {
-        $log.debug('Getting all accounts');
-        $http.get('/api/bank-accounts/')
-          .then(function(response) {
-            $log.debug('Loaded all bank accounts from server (' + response.data.length + ' found)');
-            bankAccount.accounts = response.data;
-            socket.syncUpdates('bankAccount', bankAccount.accounts);
-          });
-      };
-      bankAccount.getBankAccounts(); // Execute on initialisation
 
       bankAccount.addAccount = function(account) {
         $log.debug('Adding account ' + account.name);

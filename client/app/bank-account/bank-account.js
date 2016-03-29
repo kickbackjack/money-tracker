@@ -6,7 +6,7 @@ angular.module('moneyBagsApp')
       .state('bank-account', {
         url: '/bank-account',
         templateUrl: 'app/bank-account/bank-account.html',
-        controller: 'BankAccountCtrl',
+        controller: 'BankAccountCtrl'
         // abstract: true
       })
       .state('bank-account.list', {

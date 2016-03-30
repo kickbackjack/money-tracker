@@ -5,6 +5,8 @@ angular.module('moneyBagsApp')
     $stateProvider
       .state('main', {
         url: '/',
-        template: '<main></main>'
+        templateUrl: 'app/main/main.html',
+        controller: 'MainController',
+        controllerAs: 'main'
       });
   });

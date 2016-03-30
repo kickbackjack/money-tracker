@@ -2,41 +2,28 @@
 
 (function() {
 
-class MainController {
+  class MainController {
 
-  constructor($http, $scope, socket) {
-    this.$http = $http;
-    this.socket = socket;
-    this.awesomeThings = [];
-
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
-    });
-  }
-
-  $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      this.socket.syncUpdates('thing', this.awesomeThings);
-    });
-  }
-
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
+    constructor($http, $scope, socket, BankAccount) {
+      //$scope.accounts = BankAccount.accounts;
+      //
+      //$http.get('/api/bank-accounts')
+      //  .then(response => {
+      //    $scope.accounts = response.data;
+      //    socket.syncUpdates('bankAccount', $scope.accounts);
+      //  });
+      //
+      //$scope.$on('$destroy', function() {
+      //  socket.unsyncUpdates('bankAccount');
+      //});
+      //
+      //$scope.addBankAccount = function(account) {
+      //  BankAccount.addBankAccount(account);
+      //}
     }
   }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
-
-angular.module('moneyBagsApp')
-  .component('main', {
-    templateUrl: 'app/main/main.html',
-    controller: MainController
-  });
+  angular.module('moneyBagsApp')
+    .controller('MainController', MainController);
 
 })();

@@ -1,6 +1,7 @@
 'use strict';
 
 import crypto from 'crypto';
+//import Account from '../account/account.model';
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var validatePresenceOf = function(value) {
@@ -44,6 +45,16 @@ module.exports = function(sequelize, DataTypes) {
     github: DataTypes.JSON
 
   }, {
+
+    /**
+     * Custom Class Methods
+     */
+    classMethods: {
+      associate: function(models) {
+        User.hasMany(models.Account, {as: 'Accounts'});
+        User.hasOne(models.Budget, {as: 'Budget'});
+      }
+    },
 
     /**
      * Virtual Getters
@@ -184,7 +195,7 @@ module.exports = function(sequelize, DataTypes) {
 
         if (!callback) {
           return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
-                       .toString('base64');
+            .toString('base64');
         }
 
         return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,
@@ -231,6 +242,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  //User.hasMany(models.Accounts, {as: 'accounts'});
 
   return User;
 };

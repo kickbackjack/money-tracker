@@ -14,6 +14,7 @@ var db = {
 };
 
 // Insert models below
+db.SubCategory = db.sequelize.import('../api/sub-category/sub-category.model');
 db.Category = db.sequelize.import('../api/category/category.model');
 db.Budget = db.sequelize.import('../api/budget/budget.model');
 db.Account = db.sequelize.import('../api/account/account.model');

@@ -1,15 +1,26 @@
 'use strict';
 
 export default function(sequelize, DataTypes) {
-  return sequelize.define('Category', {
+  var Category = sequelize.define('Category', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    name: DataTypes.STRING,
-    info: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: DataTypes.STRING,
     active: DataTypes.BOOLEAN
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Category.hasMany(models.SubCategory, {as: 'SubCategory'});
+      }
+    }
   });
+
+  return Category;
 }

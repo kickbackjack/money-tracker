@@ -1,53 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
-
-        <div class="form-group">
+<div layout="row" layout-fill layout-align="center center">
+  <md-card class="small-container">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Login</span>
+        </h2>
+      </div>
+    </md-toolbar>
+    <md-card-content>
+      <form class="form" name="form" ng-submit="vm.login(form)">
+        <md-input-container class="md-block" flex-gt-xs>
           <label>Email</label>
-
           <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
-        </div>
+          <div ng-messages="form.email.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
 
-        <div class="form-group">
+        <md-input-container class="md-block" flex-gt-xs>
           <label>Password</label>
-
           <input type="password" name="password" class="form-control" ng-model="vm.user.password" required>
-        </div>
+          <div ng-messages="form.password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
 
         <div class="form-group has-error">
           <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
-             Please enter your email and password.
+            Please enter your email and password.
           </p>
           <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-             Please enter a valid email.
+            Please enter a valid email.
           </p>
 
           <p class="help-block">{{ vm.errors.other }}</p>
         </div>
 
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Login
-          </button>
-          <a class="btn btn-default btn-lg btn-register" ui-sref="signup">
+        <div layout="row">
+          <span flex></span>
+          <md-button class="md-raised" ui-sref="signup">
             Register
-          </a>
+          </md-button>
+          <md-button class="md-primary md-raised" type="submit">
+            Login
+          </md-button>
         </div>
 
-        <hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
+        <md-content layout-margin>
+          <div>
             <oauth-buttons classes="btn-block"></oauth-buttons>
           </div>
-        </div>
+        </md-content>
       </form>
-    </div>
-  </div>
-  <hr>
+    </md-card-content>
+  </md-card>
 </div>

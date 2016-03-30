@@ -1,16 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/things              ->  index
- * POST    /api/things              ->  create
- * GET     /api/things/:id          ->  show
- * PUT     /api/things/:id          ->  update
- * DELETE  /api/things/:id          ->  destroy
+ * GET     /api/bank-accounts              ->  index
+ * POST    /api/bank-accounts              ->  create
+ * GET     /api/bank-accounts/:id          ->  show
+ * PUT     /api/bank-accounts/:id          ->  update
+ * DELETE  /api/bank-accounts/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import {Thing} from '../../sqldb';
+import BankAccount from './bank-account.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -23,8 +23,9 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    return entity.updateAttributes(updates)
-      .then(updated => {
+    var updated = _.merge(entity, updates);
+    return updated.saveAsync()
+      .spread(updated => {
         return updated;
       });
   };
@@ -33,7 +34,7 @@ function saveUpdates(updates) {
 function removeEntity(res) {
   return function(entity) {
     if (entity) {
-      return entity.destroy()
+      return entity.removeAsync()
         .then(() => {
           res.status(204).end();
         });
@@ -58,55 +59,43 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Things
+// Gets a list of BankAccounts
 export function index(req, res) {
-  return Thing.findAll()
+  BankAccount.findAsync()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Thing from the DB
+// Gets a single BankAccount from the DB
 export function show(req, res) {
-  return Thing.find({
-    where: {
-      _id: req.params.id
-    }
-  })
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Thing in the DB
+// Creates a new BankAccount in the DB
 export function create(req, res) {
-  return Thing.create(req.body)
+  BankAccount.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Thing in the DB
+// Updates an existing BankAccount in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Thing.find({
-    where: {
-      _id: req.params.id
-    }
-  })
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Thing from the DB
+// Deletes a BankAccount from the DB
 export function destroy(req, res) {
-  return Thing.find({
-    where: {
-      _id: req.params.id
-    }
-  })
+  BankAccount.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

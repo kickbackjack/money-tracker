@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .directive('oauthButtons', function() {
     return {
       templateUrl: 'components/oauth-buttons/oauth-buttons.html',

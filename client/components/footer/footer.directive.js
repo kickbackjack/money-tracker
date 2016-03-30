@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .directive('footer', function() {
     return {
       templateUrl: 'components/footer/footer.html',

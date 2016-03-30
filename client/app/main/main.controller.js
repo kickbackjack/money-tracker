@@ -33,7 +33,7 @@ class MainController {
   }
 }
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .component('main', {
     templateUrl: 'app/main/main.html',
     controller: MainController

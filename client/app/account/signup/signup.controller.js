@@ -41,5 +41,5 @@ class SignupController {
   }
 }
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .controller('SignupController', SignupController);

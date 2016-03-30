@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .directive('mongooseError', function() {
     return {
       restrict: 'A',

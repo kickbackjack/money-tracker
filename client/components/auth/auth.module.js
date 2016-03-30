@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('tmpApp.auth', [
-  'tmpApp.constants',
-  'tmpApp.util',
+angular.module('moneyBagsApp.auth', [
+  'moneyBagsApp.constants',
+  'moneyBagsApp.util',
   'ngCookies',
   'ui.router'
 ])

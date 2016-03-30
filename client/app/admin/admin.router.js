@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmpApp.admin')
+angular.module('moneyBagsApp.admin')
   .config(function($stateProvider) {
     $stateProvider
       .state('admin', {

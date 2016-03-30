@@ -14,7 +14,7 @@ class AdminController {
   }
 }
 
-angular.module('tmpApp.admin')
+angular.module('moneyBagsApp.admin')
   .controller('AdminController', AdminController);
 
 })();

@@ -26,7 +26,7 @@ function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
   };
 }
 
-angular.module('tmpApp.auth')
+angular.module('moneyBagsApp.auth')
   .factory('authInterceptor', authInterceptor);
 
 })();

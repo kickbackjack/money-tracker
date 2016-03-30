@@ -59,7 +59,7 @@ function UtilService($window) {
   return Util;
 }
 
-angular.module('tmpApp.util')
+angular.module('moneyBagsApp.util')
   .factory('Util', UtilService);
 
 })();

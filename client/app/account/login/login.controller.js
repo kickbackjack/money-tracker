@@ -29,5 +29,5 @@ class LoginController {
   }
 }
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .controller('LoginController', LoginController);

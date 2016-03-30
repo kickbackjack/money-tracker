@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .factory('Modal', function($rootScope, $uibModal) {
     /**
      * Opens a modal

@@ -25,5 +25,5 @@ class SettingsController {
   }
 }
 
-angular.module('tmpApp')
+angular.module('moneyBagsApp')
   .controller('SettingsController', SettingsController);

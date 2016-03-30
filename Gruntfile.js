@@ -317,7 +317,7 @@ module.exports = function (grunt) {
     // `server/config/environment/shared.js`
     ngconstant: {
       options: {
-        name: 'tmpApp.constants',
+        name: 'moneyBagsApp.constants',
         dest: '<%= yeoman.client %>/app/app.constant.js',
         deps: [],
         wrap: true,
@@ -336,7 +336,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'tmpApp',
+        module: 'moneyBagsApp',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,

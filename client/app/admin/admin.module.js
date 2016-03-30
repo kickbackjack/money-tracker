@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmpApp.admin', [
-  'tmpApp.auth',
+angular.module('moneyBagsApp.admin', [
+  'moneyBagsApp.auth',
   'ui.router'
 ]);

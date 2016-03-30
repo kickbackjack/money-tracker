@@ -1,0 +1,29 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import '../bower_components/bootstrap-social/bootstrap-social.scss';
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../bower_components/font-awesome/scss/font-awesome';
+
+/**
+ * App-wide Styles
+ */
+.mb-navbar-img {
+  height: 48px
+}
+
+.small-container {
+  max-width: 520px;
+  width: 80%;
+}
+
+// Component styles are injected through grunt
+// injector
+@import 'admin/admin.scss';
+@import 'bank-account/bank-account.scss';
+@import 'budget/budget.scss';
+@import 'directives/transaction-grid/transaction-grid.scss';
+@import 'main/main.scss';
+@import '../components/charts/sparkline/sparkline.scss';
+@import '../components/modal/modal.scss';
+@import '../components/oauth-buttons/oauth-buttons.scss';
+// endinjector

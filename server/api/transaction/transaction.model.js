@@ -8,8 +8,13 @@ export default function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    datecreated: DataTypes.NOW,
+    datetransaction: DataTypes.DATE,
     name: DataTypes.STRING,
-    info: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    description: DataTypes.STRING,
+    cleared: DataTypes.BOOLEAN,
+    income: DataTypes.DOUBLE,
+    outcome: DataTypes.DOUBLE,
+    externalpayee: DataTypes.STRING
   });
 }

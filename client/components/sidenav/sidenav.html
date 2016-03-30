@@ -1,0 +1,52 @@
+<div ng-controller="SidenavController" layout="vertical">
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-sm')"
+    md-disable-backdrop
+    md-whiteframe="4">
+
+    <md-content>
+      <md-section>
+        <!--<md-toolbar class="md-tall md-primary">-->
+          <!--<div class="md-toolbar-tools">-->
+            <!--<md-icon class="md-avatar-icon" md-svg-icon="user"></md-icon>-->
+            <!--<span flex></span>-->
+          <!--</div>-->
+        <!--</md-toolbar>-->
+
+        <!--<img ng-src="{{imagePath}}" alt="Washed Out">-->
+
+        <md-list>
+          <!--<md-list ng-if="getCurrentUser() != null">-->
+          <!-- BUDGET -->
+          <md-list-item class="noright" ng-repeat="item in sidenav.menu" ng-click="openLink(item.state)">
+            <md-icon class="md-avatar-icon" md-svg-icon="{{item.icon}}"></md-icon>
+            <span flex>{{item.title}}</span>
+          </md-list-item>
+
+          <!-- ACCOUNTS -->
+          <md-subheader>Accounts</md-subheader>
+          <md-list-item ng-repeat="account in accounts" ng-click="openLink('bank-account/' + account._id)">
+            <span>{{account.name}}</span>
+            <span flex></span>
+            <span>{{account.current.balance}}</span>
+          </md-list-item>
+
+          <!-- New Account -->
+          <md-list-item ng-click="openAddAccountDialog(ev)">
+            <span flex></span>
+            <span>New Account</span>
+          </md-list-item>
+
+          <md-divider></md-divider>
+
+          <md-list-item ng-click="openLink('logout')">
+            <span flex>Logout</span>
+          </md-list-item>
+
+        </md-list>
+      </md-section>
+    </md-content>
+  </md-sidenav>
+</div>

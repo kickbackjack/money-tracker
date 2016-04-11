@@ -8,7 +8,7 @@ angular.module('moneyBagsApp')
         transactions: '=transactions'
       },
       restrict: 'E',
-      link: function (scope) {
+      link: function (scope, ) {
         scope.selected = [];
 
         scope.query = {

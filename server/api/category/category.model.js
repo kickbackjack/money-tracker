@@ -13,14 +13,17 @@ export default function(sequelize, DataTypes) {
       allowNull: false
     },
     description: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
   }, {
     classMethods: {
       associate: function(models) {
-        Category.hasMany(models.SubCategory, {as: 'SubCategory'});
+        Category.hasMany(models.Transaction);
       }
     }
   });
-
   return Category;
 }

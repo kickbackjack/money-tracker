@@ -1,7 +1,7 @@
 'use strict';
 
 export default function(sequelize, DataTypes) {
-  return sequelize.define('Transaction', {
+  var Transaction = sequelize.define('Transaction', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,5 +16,21 @@ export default function(sequelize, DataTypes) {
     income: DataTypes.DOUBLE,
     outcome: DataTypes.DOUBLE,
     externalpayee: DataTypes.STRING
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Transaction.belongsTo(models.Category, {
+          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: true
+          }
+        });
+        // Transaction.hasOne(models.Category, {
+        //   as: 'Category'
+        // });
+      }
+    }
   });
+
+  return Transaction;
 }

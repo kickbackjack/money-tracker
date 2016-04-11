@@ -36,7 +36,7 @@ angular.module('moneyBagsApp')
 
       bankAccount.addAccount = function(account) {
         $log.debug('Adding account ' + account.name);
-        return $http.post('/api/bank-accounts/', account)
+        return $http.post('/api/accounts/', account)
           .then(function(response) {
             $log.log('Add account successful');
             var status = response.status;
